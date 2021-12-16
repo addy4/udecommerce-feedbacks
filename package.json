@@ -13,6 +13,8 @@
   "author": "\"addy4\"",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "passport": "^0.5.1",
+    "passport-google-oauth20": "^2.0.0"
   }
 }
