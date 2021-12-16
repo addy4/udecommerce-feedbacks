@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send({ Web: "feedbag-dev $devops" });
+    res.send({ Web: "feedbag-dev as limitlessShore via herokuGit" });
 });
 
 /*
