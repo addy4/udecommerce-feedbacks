@@ -29,7 +29,8 @@ app.get(
     (req, res) => {
         res.send({ Devops: "Dev with ITops/Dataops" });
     });
+*/
 
 const PORT = process.env.PORT || 5020
 app.listen(PORT, console.log("Listenting @5020.."));
-*/
+
