@@ -10,7 +10,7 @@ module.exports = (app) => {
 
     //for home page
     app.get('/', (_, res) => {
-        res.send({ Web: "feedbag-dev-prod as limitlessShore via herokuGit" });
+        res.send({ Web: "FeedbacksUdecommerce-Dev-Prod as LimitlessShore via herokuGit" });
     });
 
     //for logging out user
