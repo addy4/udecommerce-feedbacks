@@ -19,6 +19,7 @@
     "mongoose": "^6.1.8",
     "nodemon": "^2.0.15",
     "passport": "^0.5.1",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "request": "^2.88.2"
   }
 }
