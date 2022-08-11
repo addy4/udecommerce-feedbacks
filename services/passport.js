@@ -13,9 +13,9 @@ passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-    console.log("in deserializeUser method ", id);
-    User.findById(id).then(user => done(null, user));
+passport.deserializeUser((idx, done) => {
+    console.log("In deserializeUser method ", idx);
+    User.findById(idx).then(user => done(null, user));
 });
 
 passport.use(new GoogleStrategy({
@@ -23,22 +23,20 @@ passport.use(new GoogleStrategy({
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback',
     proxy: true
-}, (accessTk, refreshToken, profile, done) => {
-    console.log('accessToken: ', accessTk);
+}, async (accessToken, refreshToken, profile, done) => {
+
+    console.log('accessToken: ', accessToken);
     console.log('refreshToken: ', refreshToken);
     console.log('profile: ', profile);
 
-    User.findOne({ googleID: profile.id })
-        .then((userExistance) => {
-            if (userExistance) {
-                // user with this googleID ~ profile.id already exists
-                console.log("userExistance ", userExistance);
-                done(null, userExistance);
-            } else {
-                //creating user with googleID ~ profile.id. .save() is imp!
-                console.log("No userExistance ", userExistance);
-                new User({ googleID: profile.id }).save().then(user => done(null, user));
-                // new User({ googleID: profile.id }).save();
-            }
-        });
+    const existing_user = await User.findOne({ googleID: profile.id });
+
+    if (existing_user) {
+        console.log("user ALREADY exists for the given profile-ID ", profile.id, existing_user);
+        return done(null, existing_user);
+    }
+
+    const added_user = await new User({ googleId: profile.id }).save();
+    console.log("user ADDED IN DB for the given profile-ID ", added_user);
+    done(null, added_user);
 }));
