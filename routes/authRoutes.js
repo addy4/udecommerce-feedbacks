@@ -19,6 +19,10 @@ module.exports = (app) => {
         res.send(req.user);
     });
 
+    app.get('/text', (_, res) => {
+        res.send({ Text: "Text at /text route" });
+    });
+
     //for authentication test
     app.get('/api/loggedin_user', (req, res) => {
         console.log(req.user);
