@@ -6,7 +6,14 @@ module.exports = (app) => {
         passport.authenticate('google', {
             scope: ['profile', 'email']
         }));
-    app.get('/auth/google/callback', passport.authenticate('google'));
+
+    // If we remove this, the cookie isn't set
+    // this makes browser not able to use the same user's session
+    app.get('/auth/google/callback', passport.authenticate('google'),
+        (_, res) => {
+            res.redirect('/surveys');
+        }
+    );
 
     //for home page
     app.get('/', (_, res) => {
@@ -16,11 +23,12 @@ module.exports = (app) => {
     //for logging out user
     app.get('/api/logoutuser', (req, res) => {
         req.logout();
-        res.send(req.user);
+        //res.send(req.user); (this blocks redirect)
+        res.redirect('/');
     });
 
     app.get('/text', (_, res) => {
-        res.send({ Text: "Text at /text route" });
+        res.send({ Text: "Text at /text route at client end" });
     });
 
     //for authentication test

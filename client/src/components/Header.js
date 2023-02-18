@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Header extends Component {
+
+    renderComponent() {
+        switch (this.props.auth) {
+            case null:
+                return;
+            case false:
+                return (
+                    <li>
+                        <a href="/auth/google">Sign In with Google</a>
+                    </li>
+                )
+            default:
+                return (
+                    <li>
+                        <a href="/api/logoutuser">Logout</a>
+                    </li>
+                )
+        }
+    }
+
     render() {
         console.log(this.props)
         return (
@@ -11,9 +31,7 @@ class Header extends Component {
                         Feedbag
                     </a>
                     <ul className="right">
-                        <li>
-                            <a>Sign In with Google</a>
-                        </li>
+                        {this.renderComponent()}
                     </ul>
                 </div>
             </nav>
@@ -29,5 +47,8 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(Header);
 
 // whenever there is a change in state
-// mapStateToProps gets called get 'auth' part of start which is returned by
+// mapStateToProps gets called to get 'auth' part of start which is returned by
 // authReducer.js
+//<li>
+//    <a>Sign In with Google</a>
+//</li>
