@@ -3,10 +3,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header';
 import * as actions from '../actions';
+import Landing from './Landing';
 
 const Dashboard = () => <h1> Dashboard </h1>;
-const surveyNew = () => <h1> Survey New </h1>;
-const Landing = () => <h1> Landing </h1>;
 
 /*
 const App = () => {
