@@ -36,7 +36,7 @@ passport.use(new GoogleStrategy({
         return done(null, existing_user);
     }
 
-    const added_user = await new User({ googleId: profile.id }).save();
+    const added_user = await new User({ googleID: profile.id }).save();
     console.log("user ADDED IN DB for the given profile-ID ", added_user);
     done(null, added_user);
 }));
