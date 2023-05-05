@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import './Header.css';
 
 class Header extends Component {
 
@@ -32,7 +33,7 @@ class Header extends Component {
                         to={this.props.auth ? '/surveys' : '/'}
                         className="left brand-logo"
                     >
-                        Feedbag
+                        FeedBag
                     </Link>
                     <ul className="right">
                         {this.renderComponent()}
