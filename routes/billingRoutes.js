@@ -1,13 +1,40 @@
-const stripetransact = require('stripe');
+const stripeTransact = require('stripe');
 const keys = require('../config/keys');
 
-const stripe = stripetransact(keys.stripeSecretKey);
+const stripe = stripeTransact(keys.stripeSecretKey);
 
 module.exports = (app) => {
 
     // Consuming stripe token
-    app.post('/api/stripe_payment', (req, res) => {
+    app.post('/api/stripe_payment', async (req, res) => {
+
         console.log(req.body);
+
+        /*
+        const charge = await stripe.charges.create({
+            amount: 500,
+            currency: 'usd',
+            description: '$5 for 5 credits',
+            source: req.body.id
+        });
+        */
+
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: 500,
+            currency: 'usd',
+            description: '$5 for 5 credits',
+            payment_method_types: ['card'],
+        });
+
+        console.log(paymentIntent);
+
+        req.user.credits += 5;
+
+        const user = await req.user.save();
+
+        //res.send({ clientSecret: paymentIntent.client_secret });
+        res.send(user);
+
     });
 
     //for test

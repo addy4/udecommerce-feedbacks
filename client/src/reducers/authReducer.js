@@ -1,5 +1,6 @@
 import { FETCH_USER } from "../actions/types";
 
+/*
 export default function (state = {}, action) {
 
     switch (action.type) {
@@ -9,6 +10,18 @@ export default function (state = {}, action) {
             return state;
     }
 }
+*/
+
+function authReducer(state = null, action) {
+    switch (action.type) {
+        case FETCH_USER:
+            return action.payload || false;
+        default:
+            return state;
+    }
+}
+
+export default authReducer;
 
 // above block is called multiple times
 // when no user logged in, 
