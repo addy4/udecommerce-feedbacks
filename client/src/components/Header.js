@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Payments from './Payments';
 import './Header.css';
 
 class Header extends Component {
 
-    renderComponent() {
+    renderContent() {
         switch (this.props.auth) {
             case null:
                 return;
@@ -17,9 +18,13 @@ class Header extends Component {
                 )
             default:
                 return (
-                    <li>
+                    [<li>
                         <a href="/api/logoutuser">Logout</a>
+                    </li>,
+                    <li>
+                        <Payments />
                     </li>
+                    ]
                 )
         }
     }
@@ -36,7 +41,7 @@ class Header extends Component {
                         FeedBag
                     </Link>
                     <ul className="right">
-                        {this.renderComponent()}
+                        {this.renderContent()}
                     </ul>
                 </div>
             </nav>
