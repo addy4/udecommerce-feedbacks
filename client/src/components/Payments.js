@@ -5,7 +5,11 @@ import * as actions from '../actions';
 
 class Payments extends Component {
     render() {
+
+        // Log Key
         console.log(process.env.REACT_APP_STRIPE_KEY);
+
+        // Return Render Block
         return (
             <StripeCheckout
                 name="FeedBag"
