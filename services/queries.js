@@ -1,21 +1,8 @@
 // setup
-const { query } = require('express');
-const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
-// connect to DB
-mongoose.connect(keys.mongoURI);
-
-// model
-const { Schema } = mongoose
-
-const queSchema = new Schema({
-    question: String,
-    answer: String
-});
-
 // class
-const Question = mongoose.model('ques', queSchema);
+const Question = mongoose.model('ques');
 
 // post
 async function PostQuestion(query) {

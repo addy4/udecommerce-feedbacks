@@ -1,4 +1,3 @@
-const passport = require('passport')
 const { postQuestion } = require('../services/queries');
 const { answerQuestion } = require('../services/queries');
 

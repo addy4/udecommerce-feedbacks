@@ -6,6 +6,8 @@ const passport = require('passport');
 const keys = require('./config/keys');
 require('./models/User') /* just want it to be executed so that mongoose class is set correctly. */
 require('./services/passport'); /* We just want passport.js to be executed. Hence, need not assign this to a variable */
+require('./models/Ques') /* just want it to be executed so that mongoose class is set correctly. */
+require('./services/queries'); /* We just want passport.js to be executed. Hence, need not assign this to a variable */
 const authRoutes = require('./routes/authRoutes');
 const billingRoutes = require('./routes/billingRoutes');
 const queryRoutes = require('./routes/faqRoutes');
