@@ -20,12 +20,17 @@ module.exports = (app) => {
         });
         */
 
+        console.log(req.body.token);
+
+        
         const paymentIntent = await stripe.paymentIntents.create({
             amount: 500,
             currency: 'usd',
             description: '$5 for 5 credits',
-            payment_method_types: ['card'],
+            //payment_method: req.body.token
+            //payment_method_types: ['card'],
         });
+        
 
         console.log(paymentIntent);
         console.log(req.user);
