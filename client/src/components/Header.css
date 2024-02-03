@@ -2,3 +2,33 @@
     padding: 10px;
     font-family: "Gill Sans", sans-serif;
 }
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center; /* Align items vertically in the center */
+}
+
+li {
+    margin-right: 15px; /* Adjust the spacing between items as needed */
+    margin-bottom: 10px;
+}
+
+li:nth-child(1) {
+    margin-bottom: 20px; /* Increase the margin-bottom for the Payments item */
+}
+
+.link-brand {
+    font-family: "Papyrus", fantasy; /* Specify the desired font family */
+    font-size: 2.5rem; /* Adjust the font size as needed */
+    margin-bottom: 25px; /* Increase the bottom margin as needed */
+    text-decoration: none; /* Remove default underline for links */
+    color: #333; /* Set the text color as needed */
+  }
+  
+.link-brand:hover {
+    color: #f6f1f1; /* Change the color on hover if desired */
+}

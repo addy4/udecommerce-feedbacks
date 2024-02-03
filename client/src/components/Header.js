@@ -18,13 +18,13 @@ class Header extends Component {
                 )
             default:
                 return (
-                    [<li>
-                        <a href="/api/logoutuser">Logout</a>
-                    </li>,
-                    <li>
-                        <Payments />
-                    </li>
-                    ]
+                    <ul>
+                    {[
+                        <li key="1"><Payments /></li>,
+                        <li key="2">Credits: {this.props.auth.credits}</li>,
+                        <li key="3"><a href="/api/logoutuser">Logout</a></li>,
+                    ]}
+                    </ul>
                 )
         }
     }
@@ -38,7 +38,7 @@ class Header extends Component {
                         to={this.props.auth ? '/surveys' : '/'}
                         className="left brand-logo"
                     >
-                        FeedBag
+                    <div className="link-brand">FeedBag</div>
                     </Link>
                     <ul className="right">
                         {this.renderContent()}
